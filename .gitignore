@@ -14,6 +14,5 @@ venv/
 .env
 .env.production
 .DS_Store
-**/migrations/
 
 
