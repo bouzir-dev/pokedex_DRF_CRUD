@@ -1,0 +1,17 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+# Ignore Jetbrains IDE files
+.idea/
+.vscode
+
+env
+venv/
+
+.env
+.env.production
+.DS_Store
+
