@@ -7,11 +7,10 @@ __pycache__/
 # Ignore Jetbrains IDE files
 .idea/
 .vscode
+.env
 
-env
 venv/
 
-.env
 .env.production
 .DS_Store
 
