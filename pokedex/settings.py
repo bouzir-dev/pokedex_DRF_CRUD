@@ -29,6 +29,7 @@ DEBUG = os.environ.get("DEBUG", False) == "on"
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
+    '127.0.0.1',
     'localhost',
 ]
 
@@ -91,7 +92,7 @@ DATABASES = {
         "NAME": DB_NAME,
         "USER": DB_USERNAME,
         "PASSWORD": DB_PASSWORD,
-        "HOST": DB_HOSTNAME,
+        "HOST": "db",
         "PORT": DB_PORT,
     }
 }

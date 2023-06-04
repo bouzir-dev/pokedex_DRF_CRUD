@@ -1,6 +1,10 @@
 #!/bin/sh
 
+# Initiate database if it's a new one
+python manage.py makemigrations
+
 # Apply database migrations
+
 python manage.py migrate
 
 # Run import pokemon command to load data from CSV
