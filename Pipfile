@@ -9,7 +9,7 @@ djangorestframework = "==3.14.0"
 psycopg2-binary = "==2.9.6"
 drf-yasg = "==1.21.5"
 python-dotenv = "==1.0.0"
-django-filter = "*"
+django-filter = "==23.2"
 
 [dev-packages]
 
