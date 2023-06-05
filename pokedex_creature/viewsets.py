@@ -2,7 +2,7 @@ from rest_framework import viewsets, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import PokedexCreature, Pokemon
-from .serializers import PokedexCreatureSerializer, PokemonSerializer, GiveXPSerializer
+from .serializers import PokedexCreatureSerializer, PokemonSerializer, GiveXPSerializer, PokedexCreaturePartialSerializer
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -12,6 +12,11 @@ class PokedexCreatureViewSet(viewsets.ModelViewSet, PageNumberPagination):
     serializer_class = PokedexCreatureSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['type1', 'type2', 'generation', 'legendary']
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return PokedexCreaturePartialSerializer
+        return PokedexCreatureSerializer
 
 
 class PokemonViewSet(viewsets.ModelViewSet):
@@ -23,7 +28,7 @@ class PokemonViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         pokemon = self.get_object()
-        amount = request.data.get('amount', 0)
+        amount = int(request.data.get('amount', 0))
         pokemon.experience += amount
         pokemon.save()
 

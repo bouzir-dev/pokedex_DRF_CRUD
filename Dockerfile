@@ -10,8 +10,6 @@ COPY . /app
 RUN pip install pipenv
 RUN pipenv install --system --deploy
 
-#COPY entrypoint.sh /entrypoint.sh
-
 # Set the entrypoint script as executable
 RUN chmod +x entrypoint.sh
 

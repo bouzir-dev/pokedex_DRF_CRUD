@@ -7,12 +7,15 @@ class PokedexCreatureSerializer(serializers.ModelSerializer):
         model = PokedexCreature
         fields = '__all__'
 
+class PokedexCreaturePartialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PokedexCreature
+        fields = ['number', 'name', 'type1', 'type2', 'legendary']
 
 class PokemonSerializer(serializers.ModelSerializer):
     pokedex_creature_id = serializers.PrimaryKeyRelatedField(
         queryset=PokedexCreature.objects.all(),
         source='pokedex_creature',
-        write_only=True
     )
     class Meta:
         model = Pokemon
